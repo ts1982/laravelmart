@@ -1,5 +1,5 @@
-<nav class="navbar fixed-top navbar-expand-md navbar-light shadow-sm" style="background-color: #e3f2fd;">
-    <a class="navbar-brand" href="{{ url('/products') }}">
+<nav class="navbar fixed-top navbar-expand-md navbar-light shadow-sm" style="background-color: #e4ffea;">
+    <a class="navbar-brand" href="{{ url('/') }}">
         {{ config('app.name', 'Laravel') }}
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -36,10 +36,10 @@
                 </li>
             @else
                 <li>
-                    <a href="#" class="nav-link"><i class="fas fa-shopping-cart mr-4"></i></a>
+                    <a href="#" class="nav-link"><i class="fas fa-shopping-cart mr-5"></i></a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link"><i class="fas fa-heart mr-4"></i></a>
+                    <a href="#" class="nav-link"><i class="fas fa-heart mr-5"></i></a>
                 </li>
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container pt-5">
         <h1>商品情報更新</h1>
 
         <form action="{{ route('products.update', $product) }}" method="post">

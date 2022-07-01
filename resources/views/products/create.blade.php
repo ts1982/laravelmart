@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container pt-5">
         <h1>新しい商品を追加</h1>
 
         <form action="/products" method="post">

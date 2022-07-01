@@ -31,7 +31,7 @@
         @component('components.header')
         @endcomponent
 
-        <main class="pt-4 my-5">
+        <main class="mt-5 mb-2">
             @yield('content')
         </main>
 
