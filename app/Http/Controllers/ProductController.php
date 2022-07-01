@@ -13,11 +13,21 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::all();
+        if ($request->category !== null) {
+            $products = Product::where('category_id', $request->category)->get();
+            $total_count = Product::where('category_id', $request->category)->count();
+            $category = Category::find($request->category);
+        } else {
+            $products = Product::all();
+            $total_count = '';
+            $category = null;
+        }
+        $categories = Category::all();
+        $major_category_names = Category::pluck('major_category_name')->unique();
 
-        return view('products.index', compact('products'));
+        return view('products.index', compact('products', 'category', 'categories', 'major_category_names', 'total_count'));
     }
 
     /**

@@ -21,6 +21,9 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Shippori+Antique&display=swap');
+    </style>
 </head>
 
 <body>
@@ -28,7 +31,7 @@
         @component('components.header')
         @endcomponent
 
-        <main class="py-5">
+        <main class="pt-4 my-5">
             @yield('content')
         </main>
 
