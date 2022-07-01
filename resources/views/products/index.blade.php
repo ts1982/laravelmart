@@ -8,17 +8,32 @@
         </div>
         <div class="col-9 mt-4">
             <div class="container">
-                @if ($category !== null)
+                @if ($category)
                     <a href="/">トップ</a>&nbsp;>&nbsp;
                     <a href="#">{{ $category->major_category_name }}</a>&nbsp;>&nbsp;
                     {{ $category->name }}
                     <h2>{{ $category->name }}の商品一覧&nbsp;{{ $total_count }}件</h2>
+
+                    <form action="{{ route('products.index') }}" method="get" class="form-inline mb-1">
+                        <input type="hidden" name="category" value="{{ $category->id }}">
+                        <label for="selector">並び替え</label>
+                        <select name="sort" id="selector" onChange="this.form.submit();"
+                            class="form-select form-inline ml-2">
+                            @foreach ($sort as $key => $value)
+                                @if ($sorted == $value)
+                                    <option value="{{ $value }}" selected>{{ $key }}</option>
+                                @else
+                                    <option value="{{ $value }}">{{ $key }}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </form>
                 @else
                     <h1>おすすめ商品</h1>
                 @endif
                 <div class="row w-100">
                     @foreach ($products as $product)
-                        <div class="col-6 col-lg-3">
+                        <div class="col-6 col-lg-4">
                             <a href="{{ route('products.show', $product) }}">
                                 <img src="{{ asset('img/dummy.png') }}" class="img-thumbnail">
                             </a>
