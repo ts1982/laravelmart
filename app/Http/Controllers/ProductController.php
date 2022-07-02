@@ -44,7 +44,7 @@ class ProductController extends Controller
         $categories = Category::all();
         $major_category_names = Category::pluck('major_category_name')->unique();
 
-        return view('products.index', compact('products', 'category', 'categories', 'major_category_names', 'total_count', 'sort', 'sorted'));
+        return view('products/index', compact('products', 'category', 'categories', 'major_category_names', 'total_count', 'sort', 'sorted'));
     }
 
     /**
@@ -56,7 +56,7 @@ class ProductController extends Controller
     {
         $categories = Category::all();
 
-        return view('products.create', compact('categories'));
+        return view('products/create', compact('categories'));
     }
 
     /**
@@ -85,7 +85,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return view('products.show', compact('product'));
+        return view('products/show', compact('product'));
     }
 
     /**
@@ -98,7 +98,7 @@ class ProductController extends Controller
     {
         $categories = Category::all();
 
-        return view('products.edit', compact('product', 'categories'));
+        return view('products/edit', compact('product', 'categories'));
     }
 
     /**

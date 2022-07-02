@@ -29,17 +29,20 @@
                     <a class="nav-link active" href="{{ route('login') }}">{{ __('ログイン') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}"><i class="fas fa-shopping-cart mr-4"></i></a>
+                    <a class="nav-link" href="{{ route('login') }}"><i class="fas fa-heart mr-4"></i></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}"><i class="fas fa-heart mr-4"></i></a>
+                    <a class="nav-link" href="{{ route('login') }}"><i class="fas fa-shopping-cart mr-4"></i></a>
                 </li>
             @else
                 <li>
-                    <a href="#" class="nav-link"><i class="fas fa-shopping-cart mr-5"></i></a>
+                    <a href="{{ route('mypage') }}" class="nav-link mr-5"><i class="fas fa-user"></i>マイページ</a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link"><i class="fas fa-heart mr-5"></i></a>
+                    <a href="#" class="nav-link mr-5"><i class="fas fa-heart"></i></a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link mr-5"><i class="fas fa-shopping-cart"></i></a>
                 </li>
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"

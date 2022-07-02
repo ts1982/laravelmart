@@ -6,3 +6,7 @@ h5,
 .navbar-brand {
     font-family: "Shippori Antique", sans-serif;
 }
+
+li {
+    list-style: none;
+}

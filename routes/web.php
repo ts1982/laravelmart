@@ -13,6 +13,10 @@
 
 Route::get('/', 'ProductController@index');
 
+Route::get('mypage', 'UserController@mypage')->name('mypage');
+Route::get('mypage/edit', 'UserController@edit')->name('mypage.edit');
+Route::put('mypage', 'UserController@update')->name('mypage.update');
+
 Route::resource('products', 'ProductController');
 
 Auth::routes();
