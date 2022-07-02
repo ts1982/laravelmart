@@ -100,4 +100,23 @@ class UserController extends Controller
     {
         //
     }
+
+    public function edit_password()
+    {
+        return view('users/edit_password');
+    }
+
+    public function update_password(Request $request)
+    {
+        $user = Auth::user();
+
+        if ($request->password == $request->password_confirmation) {
+            $user->password = bcrypt($request->password);
+            $user->update();
+        } else {
+            return redirect()->route('mypage.edit_password');
+        }
+
+        return redirect()->route('mypage');
+    }
 }

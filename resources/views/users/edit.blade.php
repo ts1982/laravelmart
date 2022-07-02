@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('会員情報の編集') }}</div>
+                    <div class="card-header"><span class="d-inline-block text-center w-100">{{ __('会員情報の編集') }}</span></div>
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('mypage.update') }}">
@@ -125,8 +125,8 @@
                             </div> --}}
 
                             <div class="form-group row mb-0">
-                                <div class="col-md-6 offset-md-4 d-flex justify-content-center">
-                                    <button type="submit" class="btn btn-success w-50">
+                                <div class="mx-auto w-25">
+                                    <button type="submit" class="btn btn-success w-100">
                                         {{ __('更新') }}
                                     </button>
                                 </div>

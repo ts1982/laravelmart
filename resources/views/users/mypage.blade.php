@@ -3,13 +3,16 @@
 @section('content')
     <div class="row pt-5">
         <div class="col-2">
-            <h2 class="text-center mb-4">Menu</h2>
+            <h2 class="text-center mb-4">Menu List</h2>
             <ul>
                 <li class="mb-2">
                     <a href="{{ route('mypage.edit') }}">会員情報の編集</a>
                 </li>
                 <li class="mb-2">
                     <a href="">注文履歴</a>
+                </li>
+                <li class="mb-2">
+                    <a href="{{ route('mypage.edit_password') }}">パスワード変更</a>
                 </li>
                 <li class="mb-2">
                     <a href="{{ route('logout') }}">ログアウト</a>
