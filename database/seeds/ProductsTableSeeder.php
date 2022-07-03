@@ -17,9 +17,8 @@ class ProductsTableSeeder extends Seeder
         ];
 
         $descriptions = [
-            'ビジネス', '文学・評論', '人文・思想', 'スポーツ',
-            'コンピュータ・IT', '資格・検定・就職', '絵本・児童書', '写真集',
-            'ゲーム攻略本', '雑誌', 'アート・デザイン', 'ノンフィクション'
+            'とても良い商品です。', '使いやすいです。', 'デザインが美しいです。', 'すごくかっこいいです。',
+            'おすすめ商品です。', '学生におすすめです。', 'ビジネスマンにおすすめです。', '男性におすすめです。'
         ];
 
         for ($i = 0; $i < count($names); $i++) {
@@ -27,7 +26,7 @@ class ProductsTableSeeder extends Seeder
             Product::create([
                 'name' => $names[$i],
                 'description' => $descriptions[$key],
-                'price' => mt_rand(100, 100000),
+                'price' => mt_rand(100, 10000),
                 'category_id' => rand(1, 21),
             ]);
         }

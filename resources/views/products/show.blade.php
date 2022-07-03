@@ -43,6 +43,28 @@
                 <hr>
                 <h3>カスタマーレビュー</h3>
             </div>
+            <div class="offset-1 col-9">
+                <div class="row">
+                    @foreach ($reviews as $review)
+                        <div class="offset-md-5 col-md-5">
+                            <p class="h3">{{ $review->content }}</p>
+                            <label>{{ $review->created_at }}</label>
+                        </div>
+                    @endforeach
+                </div>
+
+                @auth
+                    <div class="row">
+                        <div class="offset-md-5 col-md-5">
+                            <form action="{{ route('review.store', $product) }}" method="post">
+                                @csrf
+                                <textarea name="content" class="form-control m-2"></textarea>
+                                <button type="submit" class="btn btn-success ml-2">レビューを追加</button>
+                            </form>
+                        </div>
+                    </div>
+                @endauth
+            </div>
         </div>
     </div>
     <a href="{{ route('products.edit', $product) }}">Edit</a>
@@ -51,5 +73,4 @@
         @method('delete')
         <input type="submit" value="Delete">
     </form>
-    <a href="/products">Back</a>
 @endsection

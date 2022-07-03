@@ -20,6 +20,7 @@ Route::get('mypage/password/edit', 'UserController@edit_password')->name('mypage
 Route::put('mypage/password', 'UserController@update_password')->name('mypage.update_password');
 
 Route::resource('products', 'ProductController');
+Route::post('products/{product}/reviews', 'ReviewController@store')->name('review.store');
 
 Auth::routes();
 
