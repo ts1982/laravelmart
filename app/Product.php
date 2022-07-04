@@ -4,10 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Kyslik\ColumnSortable\Sortable;
+use Overtrue\LaravelFavorite\Traits\Favoriteable;
 
 class Product extends Model
 {
-    use Sortable;
+    use Sortable, Favoriteable;
 
     public $sortable = [
         'price',

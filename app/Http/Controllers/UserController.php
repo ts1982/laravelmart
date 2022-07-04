@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -118,5 +119,24 @@ class UserController extends Controller
         }
 
         return redirect()->route('mypage');
+    }
+
+    public function favorite(Product $product)
+    {
+        $user = Auth::user();
+
+        $favorites = $user->favorites(Product::class)->paginate(5);
+
+        return view('users/favorite', compact('favorites'));
+    }
+
+    public function unfavorite(Request $request)
+    {
+        $user = Auth::user();
+        $product = Product::find($request->id);
+
+        $user->unfavorite($product);
+
+        return redirect()->route('mypage.favorite');
     }
 }

@@ -39,7 +39,7 @@
                     <a href="{{ route('mypage') }}" class="nav-link mr-5"><i class="fas fa-user"></i>マイページ</a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link mr-5"><i class="fas fa-heart"></i></a>
+                    <a href="{{ route('mypage.favorite') }}" class="nav-link mr-5"><i class="fas fa-heart"></i></a>
                 </li>
                 <li>
                     <a href="#" class="nav-link mr-5"><i class="fas fa-shopping-cart"></i></a>

@@ -5,3 +5,22 @@ body {
 li {
     list-style: none;
 }
+
+.btn-success {
+    background: rgb(0, 193, 161);
+    border: rgb(0, 193, 161);
+}
+
+.btn-success:hover {
+    background: rgb(0, 158, 132);
+    border: rgb(0, 158, 132);
+}
+
+.page-link {
+    color: rgb(0, 193, 161);
+}
+
+.page-item.active .page-link {
+    background: rgb(0, 193, 161);
+    border: rgb(0, 193, 161);
+}

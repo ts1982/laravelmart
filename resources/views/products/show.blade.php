@@ -31,9 +31,17 @@
                                 </button>
                             </div>
                             <div class="col-5">
-                                <a href="" class="btn btn-outline-primary w-100">
-                                    <i class="fas fa-heart mr-1"></i>お気に入り
-                                </a>
+                                @if ($product->isFavoritedBy(Auth::user()))
+                                    <a href="{{ route('products.favorite', $product) }}"
+                                        class="btn btn-outline-primary w-100">
+                                        <i class="fas fa-heart mr-1"></i>お気に入り解除
+                                    </a>
+                                @else
+                                    <a href="{{ route('products.favorite', $product) }}"
+                                        class="btn btn-outline-primary w-100">
+                                        <i class="fas fa-heart mr-1"></i>お気に入り
+                                    </a>
+                                @endif
                             </div>
                         </div>
                     </form>
