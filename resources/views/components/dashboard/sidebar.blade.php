@@ -8,7 +8,9 @@
     <div class="d-flex flex-column">
         <label>商品一覧</label>
         <label>親カテゴリ管理</label>
-        <label>カテゴリ管理</label>
+        <label>
+            <a href="/dashboard/categories">カテゴリ管理</a>
+        </label>
         <label>CSV一括登録</label>
     </div>
 

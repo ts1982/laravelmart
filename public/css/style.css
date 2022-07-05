@@ -32,3 +32,11 @@ li {
 .review-score:focus {
     color: rgb(0, 193, 161);
 }
+
+.link-success {
+    color: rgb(0, 193, 161);
+}
+
+.link-gray {
+    color: #888;
+}
