@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-9">
             <div class="container">
-                <form action="{{ route('categories.update', $category) }}" method="post">
+                <form action="{{ route('dashboard.categories.update', $category) }}" method="post">
                     @csrf
                     @method('put')
                     <div class="form-group">

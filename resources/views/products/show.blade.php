@@ -72,7 +72,7 @@
                                 <select name="score" class="form-control ml-2 review-score">
                                     <option value="1" class="review-score">★</option>
                                     <option value="2" class="review-score">★★</option>
-                                    <option value="3" class="review-score">★★★</option>
+                                    <option value="3" class="review-score" selected>★★★</option>
                                     <option value="4" class="review-score">★★★★</option>
                                     <option value="5" class="review-score">★★★★★</option>
                                 </select>
@@ -86,10 +86,4 @@
             </div>
         </div>
     </div>
-    <a href="{{ route('products.edit', $product) }}">Edit</a>
-    <form action="{{ route('products.destroy', $product) }}" method="post">
-        @csrf
-        @method('delete')
-        <input type="submit" value="Delete">
-    </form>
 @endsection

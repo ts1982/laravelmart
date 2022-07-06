@@ -15,7 +15,13 @@
                     <a href="{{ route('mypage.edit_password') }}">パスワード変更</a>
                 </li>
                 <li class="mb-2">
-                    <a href="{{ route('logout') }}">ログアウト</a>
+                    <a href="{{ route('logout') }}"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        {{ __('ログアウト') }}
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 </li>
             </ul>
         </div>

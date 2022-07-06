@@ -97,33 +97,6 @@
                                 </div>
                             </div>
 
-                            {{-- <div class="form-group row">
-                                <label for="password"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('パスワード') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="password" type="password"
-                                        class="form-control @error('password') is-invalid @enderror" name="password"
-                                        required autocomplete="new-password">
-
-                                    @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="password-confirm"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('パスワード確認') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control"
-                                        name="password_confirmation" required autocomplete="new-password">
-                                </div>
-                            </div> --}}
-
                             <div class="form-group row mb-0">
                                 <div class="mx-auto w-25">
                                     <button type="submit" class="btn btn-success w-100">
@@ -134,6 +107,7 @@
                         </form>
                     </div>
                 </div>
+                <a href="/mypage" class="d-block pt-3">戻る</a>
             </div>
         </div>
     </div>

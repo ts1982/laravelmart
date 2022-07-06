@@ -50,7 +50,6 @@
                 </div>
                 <div class="d-flex justify-content-center">{{ $products->appends(request()->query())->links() }}</div>
             </div>
-            <a href="{{ route('products.create') }}">New</a>
         </div>
     </div>
 @endsection

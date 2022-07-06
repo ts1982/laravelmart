@@ -35,13 +35,13 @@
                             <tr>
                                 <th>{{ $category->id }}</th>
                                 <td>{{ $category->name }}</td>
-                                <td><a href="{{ route('categories.edit', $category) }}" class="link-success">編集</a></td>
+                                <td><a href="{{ route('dashboard.categories.edit', $category) }}" class="link-success">編集</a></td>
                                 <td>
-                                    <a href="{{ route('categories.destroy', $category) }}"
+                                    <a href="{{ route('dashboard.categories.destroy', $category) }}"
                                         onclick="event.preventDefault(); document.getElementById('logout-form{{ $category->id }}').submit();"
                                         class="link-gray">削除</a>
                                     <form id="logout-form{{ $category->id }}"
-                                        action="{{ route('categories.destroy', $category) }}" method="post">
+                                        action="{{ route('dashboard.categories.destroy', $category) }}" method="post">
                                         @csrf
                                         @method('delete')
                                     </form>

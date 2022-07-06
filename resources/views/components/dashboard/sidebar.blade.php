@@ -6,7 +6,9 @@
 
     <h2>商品管理</h2>
     <div class="d-flex flex-column">
-        <label>商品一覧</label>
+        <label>
+            <a href="/dashboard/products">商品一覧</a>
+        </label>
         <label>親カテゴリ管理</label>
         <label>
             <a href="/dashboard/categories">カテゴリ管理</a>
