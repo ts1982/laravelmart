@@ -6,6 +6,7 @@
         <div class="form-inline">
             並べ替え
             <select name="sort" onChange="this.form.submit();" class="ml-2">
+                <option value="">選択してください</option>
                 @foreach ($sort as $key => $value)
                     @if ($sorted == $value)
                         <option value="{{ $value }}" selected>{{ $key }}</option>
@@ -26,7 +27,7 @@
         <a href="{{ route('dashboard.products.create') }}" class="btn btn-success">新規作成</a>
     </div>
     <div class="row">
-        <div class="col-10">
+        <div class="col-9">
             <div class="table-responsive">
                 <table class="table mt-5 text-center">
                     <thead>
@@ -47,7 +48,7 @@
                                 <td>{{ $product->name }}</td>
                                 <td>{{ $product->price }}</td>
                                 <td>{{ $product->category->name }}</td>
-                                <td>{{ $product->category->major_category_name }}</td>
+                                <td>{{ $product->category->major_category->name }}</td>
                                 <td>
                                     <a href="{{ route('dashboard.products.edit', $product) }}">編集</a>
                                 </td>

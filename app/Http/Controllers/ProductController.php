@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\Category;
+use App\MajorCategory;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -43,9 +44,10 @@ class ProductController extends Controller
         ];
 
         $categories = Category::all();
-        $major_category_names = Category::pluck('major_category_name')->unique();
+        $major_categories = MajorCategory::all();
+        // $major_category_names = Category::pluck('major_category_name')->unique();
 
-        return view('products/index', compact('products', 'category', 'categories', 'major_category_names', 'total_count', 'sort', 'sorted'));
+        return view('products/index', compact('products', 'category', 'categories', 'major_categories', 'total_count', 'sort', 'sorted'));
     }
 
     public function favorite(Product $product)

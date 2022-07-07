@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Product;
+use App\Category;
 
 class ProductsTableSeeder extends Seeder
 {
@@ -27,7 +28,7 @@ class ProductsTableSeeder extends Seeder
                 'name' => $names[$i],
                 'description' => $descriptions[$key],
                 'price' => mt_rand(100, 10000),
-                'category_id' => rand(1, 21),
+                'category_id' => rand(1, Category::count()),
             ]);
         }
     }

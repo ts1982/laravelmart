@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Category;
+use App\MajorCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\Rule;
 
 class CategoryController extends Controller
 {
@@ -16,8 +18,9 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::orderBy('id', 'desc')->paginate(10);
+        $major_categories = MajorCategory::all();
 
-        return view('dashboard/categories/index', compact('categories'));
+        return view('dashboard/categories/index', compact('categories', 'major_categories'));
     }
 
     /**
@@ -38,10 +41,25 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate(
+            [
+                'name' => 'required | unique:categories',
+                'description' => 'required',
+                'major_category_id' => 'required',
+            ],
+            [
+                'name.required' => 'カテゴリ名を入力してください。',
+                'name.unique' => 'カテゴリ名『' . $request->name . '』はすでに登録されています。',
+                'description.required' => 'カテゴリの説明を入力してください。',
+                'major_category_id.required' => '親カテゴリを選択してください。',
+            ]
+        );
+
         $category = new Category();
         $category->name = $request->name;
         $category->description = $request->description;
-        $category->major_category_name = $request->major_category_name;
+        $category->major_category_name = MajorCategory::find($request->major_category_id)->name;
+        $category->major_category_id = $request->major_category_id;
         $category->save();
 
         return redirect('/dashboard/categories');
@@ -66,7 +84,9 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('dashboard/categories/edit', compact('category'));
+        $major_categories = MajorCategory::all();
+
+        return view('dashboard/categories/edit', compact('category', 'major_categories'));
     }
 
     /**
@@ -78,10 +98,23 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
+        $request->validate(
+            [
+                'name' => ['required', Rule::unique('categories')->ignore($category->id),],
+                'description' => 'required',
+            ],
+            [
+                'name.required' => 'カテゴリ名を入力してください。',
+                'name.unique' => 'カテゴリ名『' . $request->name . '』はすでに登録されています。',
+                'description.required' => 'カテゴリの説明を入力してください。',
+            ]
+        );
+
         $category->name = $request->name;
         $category->description = $request->description;
-        $category->major_category_name = $request->major_category_name;
-        $category->save();
+        $category->major_category_name = MajorCategory::find($request->major_category_id)->name;
+        $category->major_category_id = $request->major_category_id;
+        $category->update();
 
         return redirect('/dashboard/categories');
     }

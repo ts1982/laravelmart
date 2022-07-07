@@ -32,7 +32,6 @@
             <div class="form-group">
                 <label for="product-category">カテゴリ</label>
                 <select name="category_id" id="product-category" class="form-control">
-                    <option value="">カテゴリを選択してください</option>
                     @foreach ($categories as $category)
                         @if ($category->id == $product->category_id)
                             <option value="{{ $category->id }}" selected>{{ $category->name }}</option>

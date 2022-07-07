@@ -3,14 +3,14 @@
 @section('content')
     <div class="row">
         <div class="col-2">
-            @component('components.sidebar', compact('categories', 'major_category_names'))
+            @component('components.sidebar', compact('categories', 'major_categories'))
             @endcomponent
         </div>
         <div class="col-9 mt-4">
             <div class="container">
                 @if ($category)
                     <a href="/">トップ</a>&nbsp;>&nbsp;
-                    <a href="#">{{ $category->major_category_name }}</a>&nbsp;>&nbsp;
+                    <a href="#">{{ $category->major_category->name }}</a>&nbsp;>&nbsp;
                     {{ $category->name }}
                     <h2>{{ $category->name }}の商品一覧&nbsp;{{ $total_count }}件</h2>
 
