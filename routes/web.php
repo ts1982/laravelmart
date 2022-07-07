@@ -20,6 +20,7 @@ Route::get('mypage/favorite', 'UserController@favorite')->name('mypage.favorite'
 Route::get('mypage/unfavorite', 'UserController@unfavorite')->name('mypage.unfavorite');
 Route::get('mypage/password/edit', 'UserController@edit_password')->name('mypage.edit_password');
 Route::put('mypage/password', 'UserController@update_password')->name('mypage.update_password');
+Route::delete('mypage/delete', 'UserController@destroy')->name('mypage.destroy');
 
 Route::post('products/{product}/reviews', 'ReviewController@store')->name('review.store');
 Route::get('products/{product}/favorite', 'ProductController@favorite')->name('products.favorite');
@@ -39,6 +40,7 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
     Route::resource('major_categories', 'Dashboard\MajorCategoryController');
     Route::resource('categories', 'Dashboard\CategoryController')->middleware('auth:admins');
     Route::resource('products', 'Dashboard\ProductController')->middleware('auth:admins');
+    Route::resource('users', 'Dashboard\UserController')->middleware('auth:admins');
 });
 
 if (App::environment('production')) {

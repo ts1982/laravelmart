@@ -107,7 +107,35 @@
                         </form>
                     </div>
                 </div>
-                <a href="/mypage" class="d-block pt-3">戻る</a>
+                <a href="/mypage" class="d-inline-block pt-3">戻る</a>
+                <div class="d-flex justify-content-end">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal">
+                        退会
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modalLabel">退会申請</h5>
+                                </div>
+                                <div class="modal-body">
+                                    本当に退会してよろしいですか？
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
+                                    <form action="{{ route('mypage.destroy') }}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn btn-danger">退会する</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
