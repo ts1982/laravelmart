@@ -4,7 +4,7 @@
     <div class="pt-5 w-75">
         <h1>商品登録</h1>
 
-        <form action="{{ route('dashboard.products.store') }}" method="post">
+        <form action="{{ route('dashboard.products.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="product-name">商品名</label>
@@ -36,9 +36,29 @@
                     @endforeach
                 </select>
             </div>
+            <div class="form-group">
+                <label for="product-image">画像</label>
+                <img src="#" id="product-image-preview" class="w-25">
+                <input type="file" name="image" id="product-image">
+            </div>
             <button type="submit" class="btn btn-success">商品を登録</button>
         </form>
 
         <a href="/dashboard/products" class="d-inline-block mt-2">商品一覧に戻る</a>
     </div>
+
+    <script>
+        const product_image = document.getElementById('product-image');
+        const product_image_preview = document.getElementById('product-image-preview');
+
+        product_image.change(function() {
+            if (this.files && this.files[0]) {
+                let reader = newFileReader();
+                reader.onload = function(e) {
+                    product_image_preview.attr('src', e.target.result);
+                }
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+    </script>
 @endsection

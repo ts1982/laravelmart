@@ -19,20 +19,28 @@ class ProductController extends Controller
         $sort_query = [];
         $sorted = '';
 
-        if ($request->sort) {
-            $slices = explode(' ', $request->sort);
-            $sort_query[$slices[0]] = $slices[1];
-            $sorted = $request->sort;
-        }
-
-        if ($request->keyword) {
-            $keyword = trim($request->keyword);
-            $total_count = Product::where('name', 'like', "%{$keyword}%")->orWhere('id', "{$keyword}")->count();
-            $products = Product::where('name', 'like', "%{$keyword}%")->orWhere('id', "{$keyword}")->sortable($sort_query)->paginate(10);
-        } else {
+        if ($request->direction) {
+            $sort_query = [$request->sort => $request->direction];
             $keyword = '';
             $total_count = Product::count();
             $products = Product::sortable($sort_query)->paginate(10);
+            $sorted = $request->sort . ' ' . $request->direction;
+        } else {
+            if ($request->sort) {
+                $slices = explode(' ', $request->sort);
+                $sort_query[$slices[0]] = $slices[1];
+                $sorted = $request->sort;
+            }
+
+            if ($request->keyword) {
+                $keyword = trim($request->keyword);
+                $total_count = Product::where('name', 'like', "%{$keyword}%")->orWhere('id', "{$keyword}")->count();
+                $products = Product::where('name', 'like', "%{$keyword}%")->orWhere('id', "{$keyword}")->sortable($sort_query)->paginate(10);
+            } else {
+                $keyword = '';
+                $total_count = Product::count();
+                $products = Product::sortable($sort_query)->paginate(10);
+            }
         }
 
         $sort = [
@@ -83,6 +91,10 @@ class ProductController extends Controller
         $product->description = $request->description;
         $product->price = $request->price;
         $product->category_id = $request->category_id;
+        if ($request->file('image')) {
+            $image = $request->file('image')->store('public/products');
+            $product->image = basename($image);
+        }
         $product->save();
 
         return redirect()->route('dashboard.products.index');
@@ -138,6 +150,10 @@ class ProductController extends Controller
         $product->description = $request->description;
         $product->price = $request->price;
         $product->category_id = $request->category_id;
+        if ($request->hasFile('image')) {
+            $image = $request->file('image')->store('public/products');
+            $product->image = basename($image);
+        }
         $product->update();
 
         return redirect()->route('dashboard.products.index');

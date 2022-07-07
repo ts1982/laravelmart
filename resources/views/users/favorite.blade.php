@@ -11,8 +11,13 @@
                 @endphp
                 <div class="row align-items-center">
                     <div class="col-md-3">
-                        <a href="{{ route('products.show', $product) }}" class=""><img
-                                src="{{ asset('img/dummy.png') }}" class="w-100"></a>
+                        <a href="{{ route('products.show', $product) }}">
+                            @if ($product->image)
+                                <img src="{{ asset('storage/products/' . $product->image) }}" class="w-100">
+                            @else
+                                <img src="{{ asset('img/dummy.png') }}" class="w-100">
+                            @endif
+                        </a>
                     </div>
                     <div class="col">
                         <p class="h4">{{ $product->name }}</p>

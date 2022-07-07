@@ -51,6 +51,6 @@ class LoginController extends Controller
 
     public function loggedOut(Request $request)
     {
-        return redirect('dashboard.login');
+        return redirect('dashboard/login');
     }
 }

@@ -19,20 +19,29 @@ class ProductController extends Controller
     {
         $sort_query = [];
         $sorted = '';
-        if ($request->sort) {
-            $slices = explode(' ', $request->sort);
-            $sort_query[$slices[0]] = $slices[1];
-            $sorted = $request->sort;
-        }
 
-        if ($request->category) {
+        if ($request->direction) {
+            $sort_query = [$request->sort => $request->direction];
             $products = Product::where('category_id', $request->category)->sortable($sort_query)->paginate(6);
             $total_count = Product::where('category_id', $request->category)->count();
+            $sorted = $request->sort . ' ' . $request->direction;
             $category = Category::find($request->category);
         } else {
-            $products = Product::sortable($sort_query)->paginate(6);
-            $total_count = '';
-            $category = null;
+            if ($request->sort) {
+                $slices = explode(' ', $request->sort);
+                $sort_query[$slices[0]] = $slices[1];
+                $sorted = $request->sort;
+            }
+
+            if ($request->category) {
+                $products = Product::where('category_id', $request->category)->sortable($sort_query)->paginate(6);
+                $total_count = Product::where('category_id', $request->category)->count();
+                $category = Category::find($request->category);
+            } else {
+                $products = Product::sortable($sort_query)->paginate(6);
+                $total_count = '';
+                $category = null;
+            }
         }
 
         $sort = [

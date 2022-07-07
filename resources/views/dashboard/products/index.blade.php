@@ -44,9 +44,15 @@
                         @foreach ($products as $product)
                             <tr>
                                 <th scope="row">{{ $product->id }}</th>
-                                <td class="w-25"><img src="{{ asset('img/dummy.png') }}" class="w-100"></td>
+                                <td class="w-25">
+                                    @if ($product->image)
+                                        <img src="{{ asset('storage/products/' . $product->image) }}" class="w-100">
+                                    @else
+                                        <img src="{{ asset('img/dummy.png') }}" class="w-100">
+                                    @endif
+                                </td>
                                 <td>{{ $product->name }}</td>
-                                <td>{{ $product->price }}</td>
+                                <td>￥{{ $product->price }}</td>
                                 <td>{{ $product->category->name }}</td>
                                 <td>{{ $product->category->major_category->name }}</td>
                                 <td>
@@ -67,7 +73,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="d-flex justify-content-center">{{ $products->links() }}</div>
+            <div class="d-flex justify-content-center">{{ $products->appends(request()->query())->links() }}</div>
         </div>
     </div>
 @endsection
