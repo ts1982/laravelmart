@@ -42,7 +42,7 @@ class CategoriesTableSeeder extends Seeder
                     Category::create([
                         'name' => $first_category,
                         'description' => $first_category,
-                        'major_category_name' => MajorCategory::find($major_category_id),
+                        // 'major_category_name' => MajorCategory::find($major_category_id),
                         'major_category_id' => $major_category_id,
                     ]);
                 }
@@ -53,7 +53,7 @@ class CategoriesTableSeeder extends Seeder
                     Category::create([
                         'name' => $second_category,
                         'description' => $second_category,
-                        'major_category_name' => MajorCategory::find($major_category_id),
+                        // 'major_category_name' => MajorCategory::find($major_category_id),
                         'major_category_id' => $major_category_id,
                     ]);
                 }
@@ -64,7 +64,7 @@ class CategoriesTableSeeder extends Seeder
                     Category::create([
                         'name' => $third_category,
                         'description' => $third_category,
-                        'major_category_name' => MajorCategory::find($major_category_id),
+                        // 'major_category_name' => MajorCategory::find($major_category_id),
                         'major_category_id' => $major_category_id,
                     ]);
                 }
@@ -75,7 +75,7 @@ class CategoriesTableSeeder extends Seeder
                     Category::create([
                         'name' => $forth_category,
                         'description' => $forth_category,
-                        'major_category_name' => MajorCategory::find($major_category_id),
+                        // 'major_category_name' => MajorCategory::find($major_category_id),
                         'major_category_id' => $major_category_id,
                     ]);
                 }

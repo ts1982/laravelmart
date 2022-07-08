@@ -41,13 +41,21 @@
                     @endforeach
                 </select>
             </div>
+            <div class="form-check mb-3">
+                @if ($product->recommend_flag)
+                    <input type="checkbox" name="recommend" id="product-recommend" class="form-check-input" checked>
+                @else
+                    <input type="checkbox" name="recommend" id="product-recommend" class="form-check-input">
+                @endif
+                <label for="product-recommend" class="form-check-label">おすすめ</label>
+            </div>
             <div class="form-group">
                 <label for="product-image" class="mr-3">画像</label>
                 @if ($product->image)
                     <img src="{{ asset('storage/products/' . $product->image) }}" id="product-image-preview"
                         class="w-25">
                 @else
-                    <img src="{{ asset('public/dummy.png') }}" id="product-image-preview">
+                    <img src="{{ asset('public/dummy.png') }}" id="product-image-preview" class="w-25">
                 @endif
                 <div class="d-flex flex-column">
                     <small>600ox × 600px推奨。<br>商品の魅力が伝わる画像をアップロードしてください。</small>

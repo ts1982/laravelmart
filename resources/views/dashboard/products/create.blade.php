@@ -36,6 +36,10 @@
                     @endforeach
                 </select>
             </div>
+            <div class="form-check mb-3">
+                <input type="checkbox" name="recommend" id="product-recommend" class="form-check-input">
+                <label for="product-recommend" class="form-check-label">おすすめ</label>
+            </div>
             <div class="form-group">
                 <label for="product-image">画像</label>
                 <img src="#" id="product-image-preview" class="w-25">

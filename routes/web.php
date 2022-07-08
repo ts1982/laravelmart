@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'ProductController@index');
+Route::get('/', 'WebController@index');
 
 Route::get('mypage', 'UserController@mypage')->name('mypage');
 Route::get('mypage/edit', 'UserController@edit')->name('mypage.edit');

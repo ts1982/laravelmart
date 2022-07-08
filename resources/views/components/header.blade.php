@@ -10,14 +10,14 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <!-- Left Side Of Navbar -->
         <div class="ml-4 mr-auto">
-            <form class="form-inline">
-                <input class="form-control me-2 w-75" type="search" placeholder="Search" aria-label="Search">
+            <form class="form-inline my-auto">
+                <input class="form-control w-75" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-success" type="submit"><i class="fas fa-search"></i></button>
             </form>
         </div>
 
         <!-- Right Side Of Navbar -->
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto align-items-center">
             <!-- Authentication Links -->
             @guest
                 @if (Route::has('register'))

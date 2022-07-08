@@ -39,7 +39,7 @@ class ProductController extends Controller
             } else {
                 $keyword = '';
                 $total_count = Product::count();
-                $products = Product::sortable($sort_query)->paginate(10);
+                $products = Product::orderBy('updated_at', 'desc')->sortable($sort_query)->paginate(10);
             }
         }
 
@@ -91,6 +91,11 @@ class ProductController extends Controller
         $product->description = $request->description;
         $product->price = $request->price;
         $product->category_id = $request->category_id;
+        if ($request->recommend) {
+            $product->recommend_flag = true;
+        } else {
+            $product->recommend_flag = false;
+        }
         if ($request->file('image')) {
             $image = $request->file('image')->store('public/products');
             $product->image = basename($image);
@@ -150,6 +155,11 @@ class ProductController extends Controller
         $product->description = $request->description;
         $product->price = $request->price;
         $product->category_id = $request->category_id;
+        if ($request->recommend) {
+            $product->recommend_flag = true;
+        } else {
+            $product->recommend_flag = false;
+        }
         if ($request->hasFile('image')) {
             $image = $request->file('image')->store('public/products');
             $product->image = basename($image);
