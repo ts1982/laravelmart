@@ -17,7 +17,7 @@
             </select>
         </div>
         <div class="form-inline mt-2 w-75">
-            商品ID・商品名
+            商品名
             <input type="text" name="keyword" value="{{ $keyword }}" class="form-control w-25 ml-2">
             <button type="submit" class="btn btn-success">検索</button>
         </div>
@@ -46,7 +46,8 @@
                                 <th scope="row">{{ $product->id }}</th>
                                 <td class="w-25">
                                     @if ($product->image)
-                                        <img src="{{ asset('storage/products/' . $product->image) }}" class="w-100">
+                                        <img src="{{ $product->image }}" class="w-100">
+                                        {{-- <img src="{{ asset('storage/products/' . $product->image) }}" class="w-100"> --}}
                                     @else
                                         <img src="{{ asset('img/dummy.png') }}" class="w-100">
                                     @endif

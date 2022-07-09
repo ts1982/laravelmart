@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Product;
 use App\Category;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -18,10 +19,10 @@ class ProductController extends Controller
     {
         $sort_query = [];
         $sorted = '';
+        $keyword = '';
 
         if ($request->direction) {
             $sort_query = [$request->sort => $request->direction];
-            $keyword = '';
             $total_count = Product::count();
             $products = Product::sortable($sort_query)->paginate(10);
             $sorted = $request->sort . ' ' . $request->direction;
@@ -34,10 +35,9 @@ class ProductController extends Controller
 
             if ($request->keyword) {
                 $keyword = trim($request->keyword);
-                $total_count = Product::where('name', 'like', "%{$keyword}%")->orWhere('id', "{$keyword}")->count();
-                $products = Product::where('name', 'like', "%{$keyword}%")->orWhere('id', "{$keyword}")->sortable($sort_query)->paginate(10);
+                $total_count = Product::where('name', 'like', "%{$keyword}%")->count();
+                $products = Product::where('name', 'like', "%{$keyword}%")->sortable($sort_query)->paginate(10);
             } else {
-                $keyword = '';
                 $total_count = Product::count();
                 $products = Product::orderBy('updated_at', 'desc')->sortable($sort_query)->paginate(10);
             }
@@ -97,8 +97,11 @@ class ProductController extends Controller
             $product->recommend_flag = false;
         }
         if ($request->file('image')) {
-            $image = $request->file('image')->store('public/products');
-            $product->image = basename($image);
+            // $image = $request->file('image')->store('public/products');
+            // $product->image = basename($image);
+
+            $path = Storage::disk('s3')->putFile('myprefix', $request->file('image'), 'public');
+            $product->image = Storage::disk('s3')->url($path);
         }
         $product->save();
 
@@ -161,8 +164,11 @@ class ProductController extends Controller
             $product->recommend_flag = false;
         }
         if ($request->hasFile('image')) {
-            $image = $request->file('image')->store('public/products');
-            $product->image = basename($image);
+            // $image = $request->file('image')->store('public/products');
+            // $product->image = basename($image);
+
+            $path = Storage::disk('s3')->putFile('myprefix', $request->file('image'), 'public');
+            $product->image = Storage::disk('s3')->url($path);
         }
         $product->update();
 

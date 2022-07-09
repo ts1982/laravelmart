@@ -5,7 +5,8 @@
         <div class="row w-75 mt-5">
             <div class="col-5 offset-1">
                 @if ($product->image)
-                    <img src="{{ asset('storage/products/' . $product->image) }}" class="w-100 img-fluid">
+                    <img src="{{ $product->image }}" class="w-100 img-fluid">
+                    {{-- <img src="{{ asset('storage/products/' . $product->image) }}" class="w-100 img-fluid"> --}}
                 @else
                     <img src="{{ asset('img/dummy.png') }}" class="w-100 img-fluid">
                 @endif
@@ -15,7 +16,7 @@
                     <h1>{{ $product->name }}</h1>
                     <p>{{ $product->description }}</p>
                     <hr>
-                    <p class="d-flex align-items-end">￥{{ $product->price }}（税込）</p>
+                    <h4 class="d-flex align-items-end">￥{{ number_format($product->price) }}（税込）</h5>
                     <hr>
                 </div>
                 @auth
@@ -55,10 +56,10 @@
                 <hr>
                 <h3>カスタマーレビュー</h3>
             </div>
-            <div class="offset-1 col-9">
+            <div class="offset-1 col-10">
                 <div class="row">
                     @foreach ($reviews as $review)
-                        <div class="offset-md-5 col-md-5">
+                        <div class="offset-md-5 col-md-7">
                             <h3 class="review-score">{{ str_repeat('★', $review->score) }}</h3>
                             <p class="h3">{{ $review->content }}</p>
                             <h4>{{ $review->user->name }}</h4>
@@ -69,7 +70,7 @@
 
                 @auth
                     <div class="row">
-                        <div class="offset-md-5 col-md-5">
+                        <div class="offset-md-5 col-md-7">
                             <form action="{{ route('review.store', $product) }}" method="post">
                                 @csrf
                                 <h4>評価</h4>

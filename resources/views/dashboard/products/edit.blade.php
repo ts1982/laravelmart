@@ -52,8 +52,10 @@
             <div class="form-group">
                 <label for="product-image" class="mr-3">画像</label>
                 @if ($product->image)
-                    <img src="{{ asset('storage/products/' . $product->image) }}" id="product-image-preview"
+                    <img src="{{ $product->image }}" id="product-image-preview"
                         class="w-25">
+                    {{-- <img src="{{ asset('storage/products/' . $product->image) }}" id="product-image-preview"
+                        class="w-25"> --}}
                 @else
                     <img src="{{ asset('public/dummy.png') }}" id="product-image-preview" class="w-25">
                 @endif

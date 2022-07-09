@@ -14,17 +14,16 @@
                         <div class="col-sm-6 col-lg-4">
                             <a href="{{ route('products.show', $product) }}">
                                 @if ($product->image)
-                                    <img src="{{ asset('storage/products/' . $product->image) }}" class="img-thumbnail">
+                                    <img src="{{ $product->image }}" class="img-thumbnail">
+                                    {{-- <img src="{{ asset('storage/products/' . $product->image) }}" class="img-thumbnail"> --}}
                                 @else
                                     <img src="{{ asset('img/dummy.png') }}" class="img-thumbnail">
                                 @endif
                             </a>
                             <div class="row">
                                 <div class="col-12">
-                                    <p class="ml-2">
-                                        {{ $product->name }}<br>
-                                        <label>￥{{ $product->price }}</label>
-                                    </p>
+                                    <p class="ml-2">{{ $product->name }}</p>
+                                    <p class="item-price">￥{{ number_format($product->price) }}</p>
                                 </div>
                             </div>
                         </div>
@@ -36,17 +35,16 @@
                         <div class="col-6 col-lg-3">
                             <a href="{{ route('products.show', $product) }}">
                                 @if ($product->image)
-                                    <img src="{{ asset('storage/products/' . $product->image) }}" class="img-thumbnail">
+                                    <img src="{{ $product->image }}" class="img-thumbnail">
+                                    {{-- <img src="{{ asset('storage/products/' . $product->image) }}" class="img-thumbnail"> --}}
                                 @else
                                     <img src="{{ asset('img/dummy.png') }}" class="img-thumbnail">
                                 @endif
                             </a>
                             <div class="row">
                                 <div class="col-12">
-                                    <p class="ml-2">
-                                        {{ $product->name }}<br>
-                                        <label>￥{{ $product->price }}</label>
-                                    </p>
+                                    <p class="ml-2">{{ $product->name }}</p>
+                                    <p class="item-price">￥{{ number_format($product->price) }}</p>
                                 </div>
                             </div>
                         </div>
