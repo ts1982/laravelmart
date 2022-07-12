@@ -22,13 +22,19 @@
                     </div>
                     <div class="col">
                         <p class="h4">{{ $product->name }}</p>
-                        <label>￥{{ $product->price }}</label>
+                        <label>￥{{ number_format($product->price) }}</label>
                     </div>
                     <div class="col-md-2">
                         <a href="{{ route('mypage.unfavorite', ['id' => $product->id]) }}">削除</a>
                     </div>
                     <div class="col-md-2">
-                        <button class="btn btn-success">カートに入れる</button>
+                        <form action="{{ route('carts.store') }}" method="post">
+                            @csrf
+                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                            <input type="hidden" name="price" value="{{ $product->price }}">
+                            <input type="hidden" name="qty" value="1">
+                            <button type="submit" class="btn btn-success">カートに入れる</button>
+                        </form>
                     </div>
                 </div>
                 <hr>

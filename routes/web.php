@@ -22,6 +22,7 @@ Route::get('mypage/password/edit', 'UserController@edit_password')->name('mypage
 Route::put('mypage/password', 'UserController@update_password')->name('mypage.update_password');
 Route::delete('mypage/delete', 'UserController@destroy')->name('mypage.destroy');
 Route::get('mypage/cart_history', 'UserController@cart_history_index')->name('mypage.cart_history_index');
+Route::get('mypage/cart_show', 'UserController@cart_show')->name('mypage.cart_show');
 
 Route::get('carts', 'CartController@index')->name('carts.index');
 Route::post('carts/store', 'CartController@store')->name('carts.store');

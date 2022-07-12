@@ -3,7 +3,8 @@
 @section('content')
     <div class="row pt-5">
         <div class="col-md-8 offset-md-2">
-            <h2 class="text-center mb-5">パスワード変更</h2>
+            <a href="/mypage">マイページ</a>&nbsp;>&nbsp;パスワード変更
+            <h2 class="text-center mb-5 mt-3">パスワード変更</h2>
             <form action="{{ route('mypage.update_password') }}" method="post">
                 @csrf
                 @method('put')

@@ -151,9 +151,40 @@ class UserController extends Controller
     public function cart_history_index()
     {
         $user = Auth::user();
-        $orders = Cart::where('user_id', $user->id)->pluck('order_id')->unique()->toArray();
-        $orders = array_filter($orders);
+        $carts = Cart::where('user_id', $user->id)->pluck('order_id')->unique()->reverse()->toArray();
+        $carts = array_filter($carts);
 
-        return view('users/order', compact('orders'));
+        $orders = [];
+        foreach ($carts as $cart) {
+            $total_price = 0;
+            $items = Cart::where('user_id', $user->id)->where('order_id', $cart)->get();
+            foreach ($items as $item) {
+                $total_price += $item->quantity * $item->price;
+            }
+            $orders[] = [
+                'order_id' => $cart,
+                'updated_at' => Cart::where('user_id', $user->id)->where('order_id', $cart)->first()->updated_at,
+                'total_price' => $total_price,
+            ];
+        }
+
+        return view('users/orders/index', compact('orders'));
+    }
+
+    public function cart_show(Request $request)
+    {
+        $user = Auth::user();
+        $representative = Cart::where('user_id', $user->id)->where('order_id', $request->order_id)->first();
+        $order_id = $representative->order_id;
+        $updated_at = $representative->updated_at;
+        $carts = Cart::where('user_id', $user->id)->where('order_id', $request->order_id)->get();
+        $total_price = 0;
+        $count = 0;
+        foreach ($carts as $cart) {
+            $total_price += $cart->quantity * $cart->price;
+            $count++;
+        }
+
+        return view('users/orders/show', compact('carts', 'order_id', 'updated_at', 'total_price', 'count'));
     }
 }

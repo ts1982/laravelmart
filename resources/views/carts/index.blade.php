@@ -1,34 +1,47 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container row pt-5 mx-auto">
+    <div id="carts_index" class="container row pt-5 mx-auto">
         <div class="col-lg-10 offset-lg-1">
-            @if (count($cart))
+            <h1 class="mb-4">ショッピングカート</h1>
+            @if (count($cart) > 0)
                 @if (session('warning'))
                     <div class="alert alert-danger">{{ session('warning') }}</div>
                 @endif
+                <div class="row">
+                    <div class="col-lg-2 offset-lg-7">
+                        <h4>数量</h4>
+                    </div>
+                    <div class="col-lg-3">
+                        <h4>合計</h4>
+                    </div>
+                </div>
+                <hr>
                 @foreach ($cart as $item)
                     <div class="row align-items-center">
                         <div class="col-lg-3">
                             <a href="{{ route('products.show', App\Product::find($item->product_id)) }}">
-                                <img src="{{ asset('storage/products/' . $item->product->image) }}" class="img-thumbnail">
+                                <img src="{{ $item->product->image }}" class="img-thumbnail">
                             </a>
                         </div>
-                        <div class="col-lg-4">{{ $item->product->name }}</div>
-                        <div class="col-lg-3">
+                        <div class="col-lg-4">
+                            <p>{{ $item->product->name }}</p>
+                            <label>¥{{ number_format($item->product->price) }}</label>
+                        </div>
+                        {{-- <div class="col-lg-2">¥{{ number_format($item->product->price) }}</div> --}}
+                        <div class="col-lg-2 col-6">
                             <form action="{{ route('carts.update') }}" method="post">
                                 @csrf
                                 @method('put')
                                 <div class="row">
-                                    <label for="product-quantity" class="col-form-label col-4">数量</label>
                                     <input type="number" name="qty" oninput="this.form.submit();"
-                                        value="{{ $item->quantity }}" id="product-quantity" class="form-control col-4">
+                                        value="{{ $item->quantity }}" id="product-quantity" class="form-control col-7">
                                     <input type="hidden" name="product_id" value="{{ $item->product_id }}">
                                 </div>
                             </form>
                         </div>
-                        <div class="col-lg-1">
-                            ¥{{ $item->product->price * $item->quantity }}
+                        <div class="col-lg-2">
+                            <h5>¥{{ number_format($item->product->price * $item->quantity) }}</h5>
                         </div>
                         <div class="col-lg-1">
                             <form action="{{ route('carts.destroy') }}" method="post">
@@ -41,12 +54,18 @@
                     </div>
                     <hr>
                 @endforeach
-                {{-- <form action="{{ route('carts.order') }}" method="post" class="text-right">
-                    @csrf
-                    <button type="sumbit" class="btn btn-success">購入を確定する</button>
-                </form> --}}
+                <div class="row">
+                    <div class="col-lg-2 offset-lg-7">
+                        <h3>合計</h3>
+                    </div>
+                    <div class="col-lg-3">
+                        <h3>￥{{ number_format($total_price) }}</h3>
+                        <small>※表示価格は税込です</small>
+                    </div>
+                </div>
+
                 <!-- Button trigger modal -->
-                <div class="text-right">
+                <div class="text-right mt-4">
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
                         購入する
                     </button>
@@ -74,7 +93,11 @@
                     </div>
                 </div>
             @else
-                <div class="alert alert-warning">カートは空です。</div>
+                @if (session('message'))
+                    <div class="alert alert-success">{{ session('message') }}</div>
+                @else
+                    <div class="alert alert-warning">カートは空です。</div>
+                @endif
             @endif
             <a href="/">トップページに戻る</a>
         </div>

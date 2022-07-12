@@ -4,7 +4,8 @@
     <div class="container py-5">
         <div class="row">
             <div class="col-md-10 offset-md-1">
-                <div class="card">
+                <a href="/mypage">マイページ</a>&nbsp;>&nbsp;会員情報の編集
+                <div class="card mt-3">
                     <div class="card-header"><span class="d-inline-block text-center w-100">{{ __('会員情報の編集') }}</span></div>
 
                     <div class="card-body">

@@ -51,3 +51,11 @@ li {
     margin-top: -15px;
     font-size: 18px;
 }
+
+#order_show .row {
+    margin-bottom: 10px;
+}
+
+#carts_index h3,h4,h5 {
+    margin: 0;
+}

@@ -13,17 +13,21 @@ class CartController extends Controller
     {
         $user = Auth::user();
         $cart = Cart::where('user_id', $user->id)->where('order_id', '')->get();
+        $total_price = 0;
+        foreach ($cart as $item) {
+            $total_price += $item->quantity * $item->price;
+        }
 
-        return view('carts/index', compact('cart'));
+        return view('carts/index', compact('cart', 'total_price'));
     }
 
     public function store(Request $request)
     {
+        $user = Auth::user();
         $warning = '';
-        if (Cart::where('order_id', '')->where('product_id', $request->product_id)->exists()) {
+        if (Cart::where('order_id', '')->where('user_id', $user->id)->where('product_id', $request->product_id)->exists()) {
             $warning = 'この商品はすでにカートに入っています。';
         } else {
-            $user = Auth::user();
             $cart = new Cart();
             $cart->user_id = $user->id;
             $cart->product_id = $request->product_id;
@@ -63,7 +67,8 @@ class CartController extends Controller
             $item->order_id = $order_id;
             $item->save();
         }
+        $message = 'ご注文ありがとうございました！';
 
-        return redirect()->route('carts.index');
+        return redirect()->route('carts.index')->with(compact('message'));
     }
 }
