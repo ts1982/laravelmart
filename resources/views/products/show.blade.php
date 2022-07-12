@@ -17,11 +17,13 @@
                     <p>{{ $product->description }}</p>
                     <hr>
                     <h4 class="d-flex align-items-end">￥{{ number_format($product->price) }}（税込）</h5>
-                    <hr>
+                        <hr>
                 </div>
                 @auth
-                    <form action="" method="post">
+                    <form action="{{ route('carts.store') }}" method="post">
                         @csrf
+                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                        <input type="hidden" name="price" value="{{ $product->price }}">
                         <div class="form-group row">
                             <label for="quantity" class="col-2 col-form-label">数量</label>
                             <div class="col-10">

@@ -3,6 +3,11 @@ body {
     font-weight: bold;
 }
 
+.row {
+    margin-right: 0;
+    margin-left: 0;
+}
+
 li {
     list-style: none;
 }

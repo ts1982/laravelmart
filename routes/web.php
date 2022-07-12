@@ -21,6 +21,13 @@ Route::get('mypage/unfavorite', 'UserController@unfavorite')->name('mypage.unfav
 Route::get('mypage/password/edit', 'UserController@edit_password')->name('mypage.edit_password');
 Route::put('mypage/password', 'UserController@update_password')->name('mypage.update_password');
 Route::delete('mypage/delete', 'UserController@destroy')->name('mypage.destroy');
+Route::get('mypage/cart_history', 'UserController@cart_history_index')->name('mypage.cart_history_index');
+
+Route::get('carts', 'CartController@index')->name('carts.index');
+Route::post('carts/store', 'CartController@store')->name('carts.store');
+Route::put('carts/update', 'CartController@update')->name('carts.update');
+Route::delete('carts/destroy', 'CartController@destroy')->name('carts.destroy');
+Route::post('carts/order', 'CartController@order')->name('carts.order');
 
 Route::post('products/{product}/reviews', 'ReviewController@store')->name('review.store');
 Route::get('products/{product}/favorite', 'ProductController@favorite')->name('products.favorite');

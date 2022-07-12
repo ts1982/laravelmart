@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Product;
+use App\Cart;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -145,5 +146,14 @@ class UserController extends Controller
         $user->unfavorite($product);
 
         return redirect()->route('mypage.favorite');
+    }
+
+    public function cart_history_index()
+    {
+        $user = Auth::user();
+        $orders = Cart::where('user_id', $user->id)->pluck('order_id')->unique()->toArray();
+        $orders = array_filter($orders);
+
+        return view('users/order', compact('orders'));
     }
 }

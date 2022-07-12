@@ -24,4 +24,9 @@ class Product extends Model
     {
         return $this->hasMany('App\Review');
     }
+
+    public function cart()
+    {
+        return $this->hasOne('App\Cart');
+    }
 }

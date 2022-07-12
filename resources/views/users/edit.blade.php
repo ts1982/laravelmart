@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.mypage')
 
 @section('content')
     <div class="container py-5">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
                 <div class="card">
                     <div class="card-header"><span class="d-inline-block text-center w-100">{{ __('会員情報の編集') }}</span></div>
 
@@ -107,29 +107,31 @@
                         </form>
                     </div>
                 </div>
-                <a href="/mypage" class="d-inline-block pt-3">戻る</a>
-                <div class="d-flex justify-content-end">
+                <div class="mt-3">
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal">
-                        退会
-                    </button>
+                    <div class="text-right">
+                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                            data-target="#exampleModal">
+                            退会
+                        </button>
+                    </div>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="modalLabel">退会申請</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">退会申請</h5>
                                 </div>
                                 <div class="modal-body">
                                     本当に退会してよろしいですか？
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
-                                    <form action="{{ route('mypage.destroy') }}" method="post">
+                                    <form action="{{ route('mypage.destroy') }}" method="post" class="text-right">
                                         @csrf
-                                        @method('delete')
-                                        <button type="submit" class="btn btn-danger">退会する</button>
+                                        <button type="sumbit" class="btn btn-danger">退会する</button>
                                     </form>
                                 </div>
                             </div>
