@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center mb-5">
         <div class="row w-75 mt-5">
             <div class="col-5 offset-1">
                 @if ($product->image)

@@ -1,7 +1,7 @@
 @extends('layouts.mypage')
 
 @section('content')
-    <div class="row pt-5">
+    <div class="row py-5">
         <div class="col-md-8 offset-md-2">
             <h1 class="text-center">マイページ</h1>
             <table class="table mt-5">

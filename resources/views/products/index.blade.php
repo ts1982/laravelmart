@@ -2,11 +2,11 @@
 
 @section('content')
     <div class="row">
-        <div class="col-2">
+        <div class="col-2 shadow-sm">
             @component('components.sidebar', compact('categories', 'major_categories'))
             @endcomponent
         </div>
-        <div class="col-9 mt-4">
+        <div class="col-9 my-4">
             <div class="container">
                 @if ($category)
                     <a href="/">トップ</a>&nbsp;>&nbsp;

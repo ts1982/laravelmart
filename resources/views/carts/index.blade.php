@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div id="carts_index" class="container row pt-5 mx-auto">
+    <div id="carts_index" class="container row py-5 mx-auto">
         <div class="col-lg-10 offset-lg-1">
             <h1 class="mb-4">ショッピングカート</h1>
             @if (count($cart) > 0)
@@ -26,7 +26,7 @@
                         </div>
                         <div class="col-lg-4">
                             <p>{{ $item->product->name }}</p>
-                            <label>¥{{ number_format($item->product->price) }}</label>
+                            <label>¥{{ number_format($item->price) }}</label>
                         </div>
                         {{-- <div class="col-lg-2">¥{{ number_format($item->product->price) }}</div> --}}
                         <div class="col-lg-2 col-6">
@@ -41,7 +41,7 @@
                             </form>
                         </div>
                         <div class="col-lg-2">
-                            <h5>¥{{ number_format($item->product->price * $item->quantity) }}</h5>
+                            <h5>¥{{ number_format($item->price * $item->quantity) }}</h5>
                         </div>
                         <div class="col-lg-1">
                             <form action="{{ route('carts.destroy') }}" method="post">
