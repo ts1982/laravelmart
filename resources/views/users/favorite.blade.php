@@ -10,13 +10,13 @@
                     $product = App\Product::find($favorite->favoriteable_id);
                 @endphp
                 <div class="row align-items-center">
-                    <div class="col-md-3">
+                    <div class="col-md-3 favorite">
                         <a href="{{ route('products.show', $product) }}">
                             @if ($product->image)
-                                <img src="{{ $product->image }}" class="w-100">
+                                <img src="{{ $product->image }}" class="img-thumbnail w-100">
                                 {{-- <img src="{{ asset('storage/products/' . $product->image) }}" class="w-100"> --}}
                             @else
-                                <img src="{{ asset('img/dummy.png') }}" class="w-100">
+                                <img src="{{ asset('img/dummy.png') }}" class="img-thumbnail w-100">
                             @endif
                         </a>
                     </div>

@@ -9,7 +9,7 @@
         <div class="col-9 my-4">
             <div class="container">
                 <h1>おすすめ商品</h1>
-                <div class="row">
+                <div class="row recommend">
                     @foreach ($recommend_products as $product)
                         <div class="col-sm-6 col-lg-4">
                             <a href="{{ route('products.show', $product) }}">
@@ -30,7 +30,7 @@
                     @endforeach
                 </div>
                 <h2>新着商品</h2>
-                <div class="row">
+                <div class="row new-arrive">
                     @foreach ($latest_products as $product)
                         <div class="col-6 col-lg-3">
                             <a href="{{ route('products.show', $product) }}">

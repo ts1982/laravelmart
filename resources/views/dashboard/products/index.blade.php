@@ -44,12 +44,12 @@
                         @foreach ($products as $product)
                             <tr>
                                 <th scope="row">{{ $product->id }}</th>
-                                <td class="w-25">
+                                <td class="w-25 img-control">
                                     @if ($product->image)
-                                        <img src="{{ $product->image }}" class="w-100">
+                                        <img src="{{ $product->image }}" class="img-thumbnail w-100">
                                         {{-- <img src="{{ asset('storage/products/' . $product->image) }}" class="w-100"> --}}
                                     @else
-                                        <img src="{{ asset('img/dummy.png') }}" class="w-100">
+                                        <img src="{{ asset('img/dummy.png') }}" class="img-thumbnail w-100">
                                     @endif
                                 </td>
                                 <td>{{ $product->name }}</td>

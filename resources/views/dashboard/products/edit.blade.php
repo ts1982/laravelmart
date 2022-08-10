@@ -53,11 +53,11 @@
                 <label for="product-image" class="mr-3">画像</label>
                 @if ($product->image)
                     <img src="{{ $product->image }}" id="product-image-preview"
-                        class="w-25">
+                        class="img-thumbnail w-25">
                     {{-- <img src="{{ asset('storage/products/' . $product->image) }}" id="product-image-preview"
                         class="w-25"> --}}
                 @else
-                    <img src="{{ asset('public/dummy.png') }}" id="product-image-preview" class="w-25">
+                    <img src="{{ asset('public/dummy.png') }}" id="product-image-preview" class="img-thumbnail w-25">
                 @endif
                 <div class="d-flex flex-column">
                     <small>600ox × 600px推奨。<br>商品の魅力が伝わる画像をアップロードしてください。</small>

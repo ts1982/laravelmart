@@ -18,7 +18,7 @@
                 </div>
                 <hr>
                 @foreach ($cart as $item)
-                    <div class="row align-items-center">
+                    <div class="row align-items-center img-cart">
                         <div class="col-lg-3">
                             <a href="{{ route('products.show', App\Product::find($item->product_id)) }}">
                                 <img src="{{ $item->product->image }}" class="img-thumbnail">

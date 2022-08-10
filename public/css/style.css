@@ -12,6 +12,42 @@ li {
     list-style: none;
 }
 
+.recommend .img-thumbnail {
+    width: 300px;
+    height: 250px;
+    object-fit: cover;
+}
+
+.new-arrive .img-thumbnail {
+    width: 210px;
+    height: 160px;
+    object-fit: cover;
+}
+
+.normal .img-thumbnail {
+    width: 300px;
+    height: 250px;
+    object-fit: cover;
+}
+
+.favorite .img-thumbnail {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.img-cart .img-thumbnail {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.img-control .img-thumbnail {
+    width: 180px;
+    height: 130px;
+    object-fit: cover;
+}
+
 .btn-success {
     background: rgb(0, 193, 161);
     border: rgb(0, 193, 161);

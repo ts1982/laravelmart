@@ -31,7 +31,7 @@
                 @else
                     <h1>おすすめ商品</h1>
                 @endif
-                <div class="row w-100">
+                <div class="row normal w-100">
                     @foreach ($products as $product)
                         <div class="col-6 col-lg-4">
                             <a href="{{ route('products.show', $product) }}">
