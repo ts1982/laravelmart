@@ -9,12 +9,12 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <!-- Left Side Of Navbar -->
-        <div class="ml-4 mr-auto">
+        {{-- <div class="ml-4 mr-auto">
             <form class="form-inline my-auto">
                 <input class="form-control w-75" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-success" type="submit"><i class="fas fa-search"></i></button>
             </form>
-        </div>
+        </div> --}}
 
         <!-- Right Side Of Navbar -->
         <ul class="navbar-nav ml-auto">
@@ -53,7 +53,7 @@
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
+                            ログアウト
                         </a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

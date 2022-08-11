@@ -2,12 +2,12 @@
 
 @section('content')
     <div class="row">
-        <div class="col-2 shadow-sm">
+        <div class="sidebar col-md-2 shadow-sm">
             @component('components.sidebar', compact('categories', 'major_categories'))
             @endcomponent
         </div>
-        <div class="col-9 my-4">
-            <div class="container">
+        <div class="col-md-9 my-4">
+            <div class="container p-0">
                 <h1>おすすめ商品</h1>
                 <div class="row recommend">
                     @foreach ($recommend_products as $product)
@@ -32,7 +32,7 @@
                 <h2>新着商品</h2>
                 <div class="row new-arrive">
                     @foreach ($latest_products as $product)
-                        <div class="col-6 col-lg-3">
+                        <div class="col-sm-6 col-lg-3">
                             <a href="{{ route('products.show', $product) }}">
                                 @if ($product->image)
                                     <img src="{{ $product->image }}" class="img-thumbnail">

@@ -133,9 +133,10 @@ class UserController extends Controller
     {
         $user = Auth::user();
 
-        $favorites = $user->favorites(Product::class)->paginate(5);
+        $favoriteable_id = $user->favorites(Product::class)->pluck('favoriteable_id')->toArray();
+        $products = Product::whereIn('id', $favoriteable_id)->paginate(5);
 
-        return view('users/favorite', compact('favorites'));
+        return view('users/favorite', compact('products'));
     }
 
     public function unfavorite(Request $request)

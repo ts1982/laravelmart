@@ -9,12 +9,12 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <!-- Left Side Of Navbar -->
-        <div class="ml-4 mr-auto">
+        {{-- <div class="ml-4 mr-auto">
             <form class="form-inline my-auto">
                 <input class="form-control w-75" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-success" type="submit"><i class="fas fa-search"></i></button>
             </form>
-        </div>
+        </div> --}}
 
         <!-- Right Side Of Navbar -->
         <ul class="navbar-nav ml-auto">
@@ -63,5 +63,17 @@
                 </li>
             @endguest
         </ul>
+        <div class="sp mt-4">
+            <h4 class="mb-2">Menu</h4>
+            @foreach ($major_categories as $major_category)
+                <h5 class="fw-bold mb-2 ml-2">{{ $major_category->name }}</h5>
+                @foreach ($categories as $category)
+                    @if ($category->major_category->name == $major_category->name)
+                        <label class="d-block ml-3"><a
+                                href="{{ route('products.index', compact('category')) }}">{{ $category->name }}</a></label>
+                    @endif
+                @endforeach
+            @endforeach
+        </div>
     </div>
 </nav>

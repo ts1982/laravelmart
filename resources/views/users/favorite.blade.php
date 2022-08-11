@@ -5,10 +5,10 @@
         <div class="w-75">
             <h1>お気に入り</h1>
             <hr>
-            @foreach ($favorites as $favorite)
-                @php
+            @foreach ($products as $product)
+                {{-- @php
                     $product = App\Product::find($favorite->favoriteable_id);
-                @endphp
+                @endphp --}}
                 <div class="row align-items-center">
                     <div class="col-md-3 favorite">
                         <a href="{{ route('products.show', $product) }}">
@@ -39,7 +39,7 @@
                 </div>
                 <hr>
             @endforeach
-            <div class="d-flex justify-content-center">{{ $favorites->links() }}</div>
+            <div class="d-flex justify-content-center">{{ $products->links() }}</div>
         </div>
     </div>
 @endsection

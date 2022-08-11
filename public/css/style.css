@@ -8,8 +8,16 @@ body {
     margin-left: 0;
 }
 
+.p-0 {
+    padding: 0;
+}
+
 li {
     list-style: none;
+}
+
+.navbar-toggler {
+    border: none;
 }
 
 .recommend .img-thumbnail {
@@ -98,6 +106,28 @@ li {
     margin-bottom: 10px;
 }
 
-#carts_index h3,h4,h5 {
+#carts_index h3,
+h4,
+h5 {
     margin: 0;
+}
+
+@media (max-width: 767px) {
+    .pc {
+        display: none;
+    }
+    .sidebar {
+        display: none;
+    }
+    #navbarSupportedContent {
+        overflow-y: auto;
+        height: 150vw;
+        padding-bottom: 100px;
+    }
+}
+
+@media (min-width: 768px) {
+    .sp {
+        display: none;
+    }
 }
