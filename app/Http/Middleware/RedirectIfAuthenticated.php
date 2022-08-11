@@ -24,6 +24,9 @@ class RedirectIfAuthenticated
         // }
 
         if (Auth::guard($guard)->check()) {
+            if ($guard == 'admins') {
+                return redirect('/dashboard/login');
+            }
             return redirect('/');
         }
 

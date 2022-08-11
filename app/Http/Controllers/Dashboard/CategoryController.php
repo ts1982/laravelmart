@@ -17,7 +17,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::orderBy('id', 'desc')->paginate(10);
+        $categories = Category::orderBy('id')->paginate(10);
         $major_categories = MajorCategory::all();
 
         return view('dashboard/categories/index', compact('categories', 'major_categories'));

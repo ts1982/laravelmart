@@ -21,26 +21,23 @@ class ProductController extends Controller
         $sorted = '';
         $keyword = '';
 
-        if ($request->direction) {
-            $sort_query = [$request->sort => $request->direction];
-            $total_count = Product::count();
+        if ($request->sort) {
+            $slices = explode(' ', $request->sort);
+            $sort_query[$slices[0]] = $slices[1];
+            $sorted = $request->sort;
             $products = Product::sortable($sort_query)->paginate(10);
-            $sorted = $request->sort . ' ' . $request->direction;
-        } else {
-            if ($request->sort) {
-                $slices = explode(' ', $request->sort);
-                $sort_query[$slices[0]] = $slices[1];
-                $sorted = $request->sort;
-            }
+            $total_count = Product::count();
+        }
 
-            if ($request->keyword) {
-                $keyword = trim($request->keyword);
-                $total_count = Product::where('name', 'like', "%{$keyword}%")->count();
-                $products = Product::where('name', 'like', "%{$keyword}%")->sortable($sort_query)->paginate(10);
-            } else {
-                $total_count = Product::count();
-                $products = Product::orderBy('updated_at', 'desc')->sortable($sort_query)->paginate(10);
-            }
+        if ($request->keyword) {
+            $keyword = trim($request->keyword);
+            $total_count = Product::where('name', 'like', "%{$keyword}%")->count();
+            $products = Product::where('name', 'like', "%{$keyword}%")->sortable($sort_query)->paginate(10);
+        }
+
+        if (!$request->sort && !$request->keyword) {
+            $products = Product::orderBy('updated_at', 'desc')->paginate(10);
+            $total_count = Product::count();
         }
 
         $sort = [
@@ -76,13 +73,16 @@ class ProductController extends Controller
         $request->validate(
             [
                 'name' => 'required',
-                'price' => 'required',
+                'price' => 'required|numeric',
                 'description' => 'required',
+                'category_id' => 'numeric|min:1',
             ],
             [
                 'name.required' => '商品名は必須です。',
                 'price.required' => '価格は必須です。',
+                'price.numeric' => '価格は数値で入力してください。',
                 'description.required' => '商品説明は必須です。',
+                'category_id.min' => 'カテゴリを選択してください。',
             ]
         );
 
@@ -144,13 +144,16 @@ class ProductController extends Controller
         $request->validate(
             [
                 'name' => 'required',
-                'price' => 'required',
+                'price' => 'required|numeric',
                 'description' => 'required',
+                'category_id' => 'numeric|min:1',
             ],
             [
                 'name.required' => '商品名は必須です。',
                 'price.required' => '価格は必須です。',
+                'price.numeric' => '価格は数値で入力してください。',
                 'description.required' => '商品説明は必須です。',
+                'category_id.min' => 'カテゴリを選択してください。',
             ]
         );
 

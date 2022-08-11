@@ -8,21 +8,21 @@
             @csrf
             <div class="form-group">
                 <label for="product-name">商品名</label>
-                <input type="text" name="name" id="product-name" class="form-control">
+                <input type="text" name="name" value="{{ old('name') }}" id="product-name" class="form-control">
                 @error('name')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
             </div>
             <div class="form-group">
                 <label for="product-description">商品説明</label>
-                <textarea name="description" id="product-description" class="form-control"></textarea>
+                <textarea name="description" id="product-description" class="form-control">{{ old('description') }}</textarea>
                 @error('description')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
             </div>
             <div class="form-group">
                 <label for="product-price">価格</label>
-                <input type="numer" name="price" id="product-price" class="form-control">
+                <input type="numer" name="price" value="{{ old('price') }}" id="product-price" class="form-control">
                 @error('price')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
@@ -30,11 +30,14 @@
             <div class="form-group">
                 <label for="product-category">カテゴリ</label>
                 <select name="category_id" id="product-category" class="form-control">
-                    <option value="">カテゴリを選択してください</option>
+                    <option value="0">カテゴリを選択してください</option>
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                     @endforeach
                 </select>
+                @error('category_id')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
             </div>
             <div class="form-check mb-3">
                 <input type="checkbox" name="recommend" id="product-recommend" class="form-check-input">

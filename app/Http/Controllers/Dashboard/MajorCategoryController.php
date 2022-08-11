@@ -15,7 +15,7 @@ class MajorCategoryController extends Controller
      */
     public function index()
     {
-        $major_categories = MajorCategory::paginate(10);
+        $major_categories = MajorCategory::orderBy('id')->paginate(10);
 
         return view('dashboard.major_categories.index', compact('major_categories'));
     }
