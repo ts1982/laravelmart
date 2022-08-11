@@ -28,9 +28,12 @@ class CartController extends Controller
         if (Cart::where('order_id', '')->where('user_id', $user->id)->where('product_id', $request->product_id)->exists()) {
             $warning = 'この商品はすでにカートに入っています。';
         } else {
+            $product = Product::find($request->product_id);
             $cart = new Cart();
             $cart->user_id = $user->id;
             $cart->product_id = $request->product_id;
+            $cart->name = $product->name;
+            $cart->image = $product->image;
             $cart->quantity = $request->qty;
             $cart->price = $request->price;
             $cart->save();

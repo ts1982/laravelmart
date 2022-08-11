@@ -11,7 +11,7 @@
                     <img src="{{ asset('img/dummy.png') }}" class="w-100 img-fluid">
                 @endif
             </div>
-            <div class="col">
+            <div class="col-md-6">
                 <div class="d-flex flex-column">
                     <h1>{{ $product->name }}</h1>
                     <p>{{ $product->description }}</p>

@@ -21,7 +21,11 @@
                     <div class="row align-items-center img-cart">
                         <div class="col-lg-3">
                             <a href="{{ route('products.show', App\Product::find($item->product_id)) }}">
-                                <img src="{{ $item->product->image }}" class="img-thumbnail">
+                                @if ($item->product->image)
+                                    <img src="{{ $item->product->image }}" class="img-thumbnail">
+                                @else
+                                    <img src="{{ asset('img/dummy.png') }}" class="img-thumbnail">
+                                @endif
                             </a>
                         </div>
                         <div class="col-lg-4">

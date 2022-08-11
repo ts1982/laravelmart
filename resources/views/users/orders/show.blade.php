@@ -46,12 +46,16 @@
                     </div>
                     <hr>
                     @foreach ($carts as $cart)
-                        <div class="row">
+                        <div class="row img-order">
                             <div class="col-md-5">
-                                <img src="{{ $cart->product->image }}" class="img-thumbnail">
+                                @if ($cart->image)
+                                    <img src="{{ $cart->image }}" class="img-thumbnail">
+                                @else
+                                    <img src="{{ asset('img/dummy.png') }}" class="img-thumbnail">
+                                @endif
                             </div>
                             <div class="col-md-7">
-                                <h4 class="my-4 ml-2">{{ $cart->product->name }}</h4>
+                                <h4 class="my-4 ml-2">{{ $cart->name }}</h4>
                                 <div class="row">
                                     <div class="col-4 text-center">
                                         数量
