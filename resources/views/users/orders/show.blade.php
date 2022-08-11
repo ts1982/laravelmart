@@ -2,12 +2,12 @@
 
 @section('content')
     <div id="order_show" class="row py-5 mx-auto justify-content-center">
-        <div class="col-md-11 offset-md-1">
+        <div class="col-md-11 offset-md-1 p-0">
             <a href="/mypage">マイページ</a>&nbsp;>&nbsp;
             <a href="/mypage/cart_history">注文履歴</a>&nbsp;>&nbsp;注文履歴
             <h2 class="text-center mb-5 mt-3">注文履歴詳細</h2>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 p-0">
                     <h3 class="text-center">ご注文情報</h3>
                     <hr>
                     <div class="col-md-8 offset-md-2">
@@ -55,7 +55,7 @@
                                 @endif
                             </div>
                             <div class="col-md-7">
-                                <h4 class="my-4 ml-2">{{ $cart->name }}</h4>
+                                <h4 class="mt-1 ml-2">{{ $cart->name }}</h4>
                                 <div class="row">
                                     <div class="col-4 text-center">
                                         数量

@@ -27,8 +27,8 @@
                         <input type="password" id="pass_confifm" name="password_confirmation" class="form-control" required>
                     </div>
                 </div>
-                <div class="form-group text-right">
-                    <button type="submit" class="btn btn-danger">パスワード更新</button>
+                <div class="form-group row justify-content-end">
+                    <div class="col-md-8 text-right"><button type="submit" class="btn btn-danger">パスワード更新</button></div>
                 </div>
             </form>
         </div>

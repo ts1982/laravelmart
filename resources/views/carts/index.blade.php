@@ -2,24 +2,24 @@
 
 @section('content')
     <div id="carts_index" class="container row py-5 mx-auto">
-        <div class="col-lg-10 offset-lg-1">
+        <div class="col-md-10 offset-lg-1">
             <h1 class="mb-4">ショッピングカート</h1>
             @if (count($cart) > 0)
                 @if (session('warning'))
                     <div class="alert alert-danger">{{ session('warning') }}</div>
                 @endif
-                <div class="row">
-                    <div class="col-lg-2 offset-lg-7">
+                <div class="row pc">
+                    <div class="col-md-2 offset-md-7">
                         <h4>数量</h4>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-md-3">
                         <h4>合計</h4>
                     </div>
                 </div>
                 <hr>
                 @foreach ($cart as $item)
                     <div class="row align-items-center img-cart">
-                        <div class="col-lg-3">
+                        <div class="col-md-3">
                             <a href="{{ route('products.show', App\Product::find($item->product_id)) }}">
                                 @if ($item->product->image)
                                     <img src="{{ $item->product->image }}" class="img-thumbnail">
@@ -28,12 +28,12 @@
                                 @endif
                             </a>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-md-4">
                             <p>{{ $item->product->name }}</p>
                             <label>¥{{ number_format($item->price) }}</label>
                         </div>
-                        {{-- <div class="col-lg-2">¥{{ number_format($item->product->price) }}</div> --}}
-                        <div class="col-lg-2 col-6">
+                        {{-- <div class="col-md-2">¥{{ number_format($item->product->price) }}</div> --}}
+                        <div class="col-md-2 col-6">
                             <form action="{{ route('carts.update') }}" method="post">
                                 @csrf
                                 @method('put')
@@ -44,10 +44,10 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="col-lg-2">
+                        <div class="col-md-2">
                             <h5>¥{{ number_format($item->price * $item->quantity) }}</h5>
                         </div>
-                        <div class="col-lg-1">
+                        <div class="col-md-1">
                             <form action="{{ route('carts.destroy') }}" method="post">
                                 @csrf
                                 @method('delete')
@@ -59,10 +59,10 @@
                     <hr>
                 @endforeach
                 <div class="row">
-                    <div class="col-lg-2 offset-lg-7">
+                    <div class="col-md-2 offset-lg-7">
                         <h3>合計</h3>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-md-3">
                         <h3>￥{{ number_format($total_price) }}</h3>
                         <small>※表示価格は税込です</small>
                     </div>

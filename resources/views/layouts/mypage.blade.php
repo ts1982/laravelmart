@@ -21,6 +21,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/vnd.microsoft.icon">
+    <link rel="icon" href="img/favicon.ico" type="image/vnd.microsoft.icon">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=BIZ+UDGothic:wght@400;700&family=Sawarabi+Gothic&display=swap');
     </style>
@@ -33,7 +35,7 @@
 
         <main class="my-5 mb-2">
             <div class="row">
-                <div class="col-md-2">
+                <div class="col-md-2 pc">
                     @component('components.mypage.sidebar')
                     @endcomponent
                 </div>

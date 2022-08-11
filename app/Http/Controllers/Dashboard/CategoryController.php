@@ -112,7 +112,6 @@ class CategoryController extends Controller
 
         $category->name = $request->name;
         $category->description = $request->description;
-        $category->major_category_name = MajorCategory::find($request->major_category_id)->name;
         $category->major_category_id = $request->major_category_id;
         $category->update();
 

@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="d-flex justify-content-center mb-5">
-        <div class="row w-75 mt-5">
-            <div class="col-5 offset-1">
+    <div class="d-md-flex my-5">
+        <div class="row justify-content-center my-5">
+            <div class="col-md-4 offset-md-1 my-4">
                 @if ($product->image)
                     <img src="{{ $product->image }}" class="w-100 img-fluid">
                     {{-- <img src="{{ asset('storage/products/' . $product->image) }}" class="w-100 img-fluid"> --}}
@@ -11,7 +11,7 @@
                     <img src="{{ asset('img/dummy.png') }}" class="w-100 img-fluid">
                 @endif
             </div>
-            <div class="col-md-6">
+            <div class="col-md-5 mt-4">
                 <div class="d-flex flex-column">
                     <h1>{{ $product->name }}</h1>
                     <p>{{ $product->description }}</p>
@@ -32,20 +32,18 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-7">
+                            <div class="col-md-7 mt-3">
                                 <button type="submit" class="btn btn-success w-100">
                                     <i class="fas fa-shopping-cart mr-1"></i>カートに追加
                                 </button>
                             </div>
-                            <div class="col-5">
+                            <div class="col-md-5 mt-3">
                                 @if ($product->isFavoritedBy(Auth::user()))
-                                    <a href="{{ route('products.favorite', $product) }}"
-                                        class="btn btn-outline-primary w-100">
+                                    <a href="{{ route('products.favorite', $product) }}" class="btn btn-outline-primary w-100">
                                         <i class="fas fa-heart mr-1"></i>お気に入り解除
                                     </a>
                                 @else
-                                    <a href="{{ route('products.favorite', $product) }}"
-                                        class="btn btn-outline-primary w-100">
+                                    <a href="{{ route('products.favorite', $product) }}" class="btn btn-outline-primary w-100">
                                         <i class="fas fa-heart mr-1"></i>お気に入り
                                     </a>
                                 @endif
@@ -54,11 +52,11 @@
                     </form>
                 @endauth
             </div>
-            <div class="offset-1 col-11">
+            <div class="offset-md-1 col-md-9">
                 <hr>
                 <h3>カスタマーレビュー</h3>
             </div>
-            <div class="offset-1 col-10">
+            <div class="offset-md-1 col-md-9">
                 <div class="row">
                     @foreach ($reviews as $review)
                         <div class="offset-md-5 col-md-7">

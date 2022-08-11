@@ -1,22 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container py-5 d-flex justify-content-center">
-        <div class="w-75">
+    <div class="row justify-content-center pt-5">
+        <div class="col-md-8">
             <h1>お気に入り</h1>
             <hr>
+            @if (count($products) === 0)
+                <div class="alert alert-warning">お気に入りがありません。</div>
+            @endif
             @foreach ($products as $product)
-                {{-- @php
-                    $product = App\Product::find($favorite->favoriteable_id);
-                @endphp --}}
                 <div class="row align-items-center">
                     <div class="col-md-3 favorite">
                         <a href="{{ route('products.show', $product) }}">
                             @if ($product->image)
-                                <img src="{{ $product->image }}" class="img-thumbnail w-100">
+                                <img src="{{ $product->image }}" class="img-thumbnail">
                                 {{-- <img src="{{ asset('storage/products/' . $product->image) }}" class="w-100"> --}}
                             @else
-                                <img src="{{ asset('img/dummy.png') }}" class="img-thumbnail w-100">
+                                <img src="{{ asset('img/dummy.png') }}" class="img-thumbnail">
                             @endif
                         </a>
                     </div>

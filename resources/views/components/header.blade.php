@@ -1,6 +1,6 @@
 <nav class="navbar fixed-top navbar-expand-md navbar-light shadow-sm" style="background-color: #e4ffea;">
     <a class="navbar-brand" href="{{ url('/') }}">
-        <strong>LaravelMart</strong>
+        <strong class="h3">LaraMart</strong>
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

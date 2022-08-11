@@ -1,9 +1,9 @@
 @extends('layouts.mypage')
 
 @section('content')
-    <div class="container py-5">
-        <div class="row">
-            <div class="col-md-10 offset-md-1">
+    <div class="container p-0">
+        <div class="row mt-5">
+            <div class="col-md-10 offset-md-1 p-0">
                 <a href="/mypage">マイページ</a>&nbsp;>&nbsp;会員情報の編集
                 <div class="card mt-3">
                     <div class="card-header"><span class="d-inline-block text-center w-100">{{ __('会員情報の編集') }}</span></div>

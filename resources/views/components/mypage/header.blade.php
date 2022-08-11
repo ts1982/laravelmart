@@ -1,6 +1,6 @@
 <nav class="navbar fixed-top navbar-expand-md navbar-light shadow-sm" style="background-color: #e4ffea;">
     <a class="navbar-brand" href="{{ url('/') }}">
-        <strong>LaravelMart</strong>
+        <strong class="h3">LaraMart</strong>
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -63,5 +63,31 @@
                 </li>
             @endguest
         </ul>
+        <div class="sp">
+            <h2 class="text-center my-4">Menu List</h2>
+            <ul class="text-center p-0">
+                <li class="mb-2">
+                    <a href="{{ route('mypage') }}">マイページトップ</a>
+                </li>
+                <li class="mb-2">
+                    <a href="{{ route('mypage.edit') }}">会員情報の編集</a>
+                </li>
+                <li class="mb-2">
+                    <a href="{{ route('mypage.cart_history_index') }}">注文履歴</a>
+                </li>
+                <li class="mb-2">
+                    <a href="{{ route('mypage.edit_password') }}">パスワード変更</a>
+                </li>
+                <li class="mb-2">
+                    <a href="{{ route('logout') }}"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        {{ __('ログアウト') }}
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>
